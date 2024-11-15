@@ -31,6 +31,20 @@ export function onNavigatingTo(args: EventData) {
                 }
             };
             page.frame.navigate(navigationEntry);
+        },
+
+        onSearchTap(args: EventData) {
+            const navigationEntry: NavigationEntry = {
+                moduleName: 'views/books/search.view',
+                clearHistory: false,
+                animated: true,
+                transition: {
+                    name: 'slide',
+                    duration: 200,
+                    curve: 'ease'
+                }
+            };
+            page.frame.navigate(navigationEntry);
         }
     };
 

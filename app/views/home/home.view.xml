@@ -11,11 +11,20 @@
         <StackLayout row="0" class="p-16">
             <Label text="Welcome, {{ user.displayName }}!" class="h2" />
             
-            <!-- Temporary placeholder content -->
+            <!-- Search Button -->
+            <Button text="Search Books" 
+                    tap="{{ onSearchTap }}" 
+                    class="btn btn-primary m-t-20">
+                <FormattedString>
+                    <Span text="&#xf002; " class="fas" />
+                    <Span text="Search Books" />
+                </FormattedString>
+            </Button>
+
+            <!-- Placeholder Content -->
             <StackLayout class="placeholder-content m-t-20">
                 <Label text="Coming Soon:" class="h3" />
-                <Label text="• Book Search and Discovery" class="body m-t-10" />
-                <Label text="• Personal Reading Lists" class="body" />
+                <Label text="• Personal Reading Lists" class="body m-t-10" />
                 <Label text="• Book Reviews and Ratings" class="body" />
                 <Label text="• Book Clubs and Discussions" class="body" />
                 <Label text="• Reading Progress Tracking" class="body" />
