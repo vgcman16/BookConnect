@@ -2,6 +2,7 @@
 @import '@nativescript/theme/css/default.css';
 @import './styles/auth.css';
 @import './styles/home.css';
+@import './styles/books.css';
 
 /* Font Awesome Icons */
 .fas {

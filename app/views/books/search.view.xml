@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <ActionBar title="Search Books" class="action-bar">
+        <NavigationButton visibility="visible" />
+    </ActionBar>
+
+    <GridLayout rows="auto, *" class="p-10">
+        <!-- Search Bar -->
+        <SearchBar row="0" 
+                   hint="Search books by title, author, or ISBN" 
+                   submit="{{ onSearchSubmit }}"
+                   clear="{{ onSearchClear }}"
+                   textFieldHintColor="#999"
+                   class="search-bar" />
+
+        <!-- Results Area -->
+        <GridLayout row="1" rows="auto, *">
+            <!-- Loading and Error States -->
+            <StackLayout row="0">
+                <ActivityIndicator busy="{{ isLoading }}" 
+                                 visibility="{{ isLoading ? 'visible' : 'collapsed' }}" 
+                                 class="activity-indicator" />
+                
+                <Label text="{{ errorMessage }}" 
+                       visibility="{{ errorMessage ? 'visible' : 'collapsed' }}"
+                       class="error-message"
+                       textWrap="true" />
+                
+                <Label text="No books found" 
+                       visibility="{{ noResults ? 'visible' : 'collapsed' }}"
+                       class="no-results"
+                       textWrap="true" />
+            </StackLayout>
+
+            <!-- Book List -->
+            <ListView row="1" 
+                     items="{{ books }}" 
+                     itemTap="{{ onBookTap }}"
+                     class="book-list"
+                     visibility="{{ isLoading ? 'collapsed' : 'visible' }}">
+                <ListView.itemTemplate>
+                    <GridLayout columns="auto, *" rows="auto, auto" class="book-item p-10">
+                        <!-- Book Cover -->
+                        <Image col="0" 
+                               rowSpan="2" 
+                               src="{{ $parents['ListView'].getBookThumbnail($value) }}" 
+                               class="book-cover"
+                               width="60"
+                               height="90"
+                               stretch="aspectFill" />
+                        
+                        <!-- Book Info -->
+                        <StackLayout col="1" row="0" class="m-l-10">
+                            <Label text="{{ volumeInfo.title }}" 
+                                   class="book-title"
+                                   textWrap="true" />
+                            <Label text="{{ $parents['ListView'].getBookAuthors($value) }}"
+                                   class="book-author"
+                                   textWrap="true" />
+                        </StackLayout>
+                        
+                        <!-- Book Details -->
+                        <StackLayout col="1" row="1" class="m-l-10">
+                            <Label text="{{ volumeInfo.publishedDate }}"
+                                   class="book-date"
+                                   visibility="{{ volumeInfo.publishedDate ? 'visible' : 'collapsed' }}" />
+                            <Label text="{{ volumeInfo.categories[0] }}"
+                                   class="book-category"
+                                   visibility="{{ volumeInfo.categories ? 'visible' : 'collapsed' }}" />
+                        </StackLayout>
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </GridLayout>
+    </GridLayout>
+</Page>
