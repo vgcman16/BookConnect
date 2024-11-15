@@ -54,6 +54,71 @@
     margin-top: 4;
 }
 
+/* Book Details View Styles */
+.book-details {
+    background-color: #ffffff;
+}
+
+.book-cover-large {
+    height: 240;
+    border-radius: 8;
+    background-color: #f0f0f0;
+}
+
+.book-title-large {
+    font-size: 24;
+    font-weight: bold;
+    color: #333333;
+    margin: 16 0 8 0;
+}
+
+.book-author-large {
+    font-size: 18;
+    color: #666666;
+    margin-bottom: 8;
+}
+
+.book-category-large {
+    font-size: 14;
+    color: #2196F3;
+    background-color: #E3F2FD;
+    padding: 4 12;
+    border-radius: 16;
+    margin: 8 0;
+}
+
+.book-meta {
+    margin: 8 0;
+}
+
+.book-meta-label {
+    font-size: 14;
+    color: #666666;
+    font-weight: bold;
+}
+
+.book-meta-value {
+    font-size: 14;
+    color: #333333;
+}
+
+.section-title {
+    font-size: 18;
+    font-weight: bold;
+    color: #333333;
+    margin: 16 0 8 0;
+}
+
+.book-description {
+    font-size: 14;
+    color: #666666;
+    line-height: 20;
+}
+
+.action-buttons {
+    margin: 16 0;
+}
+
 /* Status Messages */
 .no-results {
     text-align: center;
@@ -85,11 +150,17 @@
         background-color: #1e1e1e;
     }
 
-    .book-title {
+    .book-details {
+        background-color: #121212;
+    }
+
+    .book-title,
+    .book-title-large {
         color: #ffffff;
     }
 
-    .book-author {
+    .book-author,
+    .book-author-large {
         color: #b3b3b3;
     }
 
@@ -97,16 +168,34 @@
         color: #808080;
     }
 
-    .book-category {
+    .book-category,
+    .book-category-large {
         color: #64B5F6;
         background-color: #1e3d5a;
+    }
+
+    .book-meta-label {
+        color: #b3b3b3;
+    }
+
+    .book-meta-value {
+        color: #ffffff;
+    }
+
+    .section-title {
+        color: #ffffff;
+    }
+
+    .book-description {
+        color: #b3b3b3;
     }
 
     .no-results {
         color: #b3b3b3;
     }
 
-    .book-cover {
+    .book-cover,
+    .book-cover-large {
         background-color: #333333;
     }
 }

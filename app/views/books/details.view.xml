@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <ActionBar title="Book Details" class="action-bar">
+        <NavigationButton visibility="visible" />
+        <ActionItem tap="{{ onShareTap }}" ios.position="right" android.position="actionBar">
+            <Label text="&#xf1e0;" class="fas" />
+        </ActionItem>
+    </ActionBar>
+
+    <GridLayout>
+        <!-- Loading State -->
+        <ActivityIndicator busy="{{ isLoading }}" 
+                         visibility="{{ isLoading ? 'visible' : 'collapsed' }}" 
+                         class="activity-indicator" />
+
+        <!-- Error Message -->
+        <StackLayout visibility="{{ errorMessage ? 'visible' : 'collapsed' }}"
+                     class="p-20">
+            <Label text="{{ errorMessage }}" 
+                   class="error-message"
+                   textWrap="true" />
+        </StackLayout>
+
+        <!-- Book Details -->
+        <ScrollView visibility="{{ !isLoading && !errorMessage ? 'visible' : 'collapsed' }}">
+            <StackLayout class="book-details p-16">
+                <!-- Book Cover -->
+                <Image src="{{ getBookThumbnail(book) }}" 
+                       class="book-cover-large"
+                       stretch="aspectFit" />
+
+                <!-- Book Info -->
+                <StackLayout class="book-info m-t-20">
+                    <Label text="{{ book.volumeInfo.title }}" 
+                           class="book-title-large"
+                           textWrap="true" />
+                    <Label text="{{ getBookAuthors(book) }}"
+                           class="book-author-large"
+                           textWrap="true" />
+                    
+                    <!-- Categories -->
+                    <Label text="{{ getBookCategories(book) }}"
+                           class="book-category-large"
+                           visibility="{{ book.volumeInfo.categories ? 'visible' : 'collapsed' }}"
+                           textWrap="true" />
+
+                    <!-- Publication Info -->
+                    <GridLayout columns="auto, *" rows="auto, auto" class="book-meta m-t-10">
+                        <Label col="0" row="0" text="Published: " class="book-meta-label" />
+                        <Label col="1" row="0" text="{{ book.volumeInfo.publishedDate }}" class="book-meta-value" />
+                        
+                        <Label col="0" row="1" text="Pages: " class="book-meta-label" />
+                        <Label col="1" row="1" text="{{ book.volumeInfo.pageCount }}" class="book-meta-value" />
+                    </GridLayout>
+
+                    <!-- Description -->
+                    <Label text="Description" class="section-title m-t-20" />
+                    <Label text="{{ book.volumeInfo.description }}"
+                           class="book-description"
+                           textWrap="true" />
+
+                    <!-- Action Buttons -->
+                    <GridLayout columns="*, *" class="action-buttons m-t-20">
+                        <Button col="0" 
+                                text="Add to Library" 
+                                tap="{{ onAddToLibraryTap }}"
+                                class="btn btn-primary m-r-5">
+                            <FormattedString>
+                                <Span text="&#xf067; " class="fas" />
+                                <Span text="Add to Library" />
+                            </FormattedString>
+                        </Button>
+                        
+                        <Button col="1" 
+                                text="Write Review" 
+                                tap="{{ onWriteReviewTap }}"
+                                class="btn btn-outline m-l-5">
+                            <FormattedString>
+                                <Span text="&#xf040; " class="fas" />
+                                <Span text="Write Review" />
+                            </FormattedString>
+                        </Button>
+                    </GridLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+</Page>
