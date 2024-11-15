@@ -1,5 +1,6 @@
 import { EventData, Page, NavigationEntry } from '@nativescript/core';
 import { AuthService } from '../../services/auth.service';
+import { showToast } from '../../utils/ui-helper';
 
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
@@ -60,40 +61,12 @@ export function onNavigatingTo(args: EventData) {
             }
         },
 
-        async onGoogleSignUpTap(args: EventData) {
-            try {
-                const vm = page.bindingContext;
-                vm.isLoading = true;
-                vm.errorMessage = '';
-
-                await authService.signInWithGoogle();
-                navigateToHome(page);
-            } catch (error) {
-                console.error('Google signup error:', error);
-                const vm = page.bindingContext;
-                vm.errorMessage = error.message || 'Google signup failed';
-            } finally {
-                const vm = page.bindingContext;
-                vm.isLoading = false;
-            }
+        onGoogleSignUpTap(args: EventData) {
+            showToast('Google Sign Up - Coming Soon!');
         },
 
-        async onFacebookSignUpTap(args: EventData) {
-            try {
-                const vm = page.bindingContext;
-                vm.isLoading = true;
-                vm.errorMessage = '';
-
-                await authService.signInWithFacebook();
-                navigateToHome(page);
-            } catch (error) {
-                console.error('Facebook signup error:', error);
-                const vm = page.bindingContext;
-                vm.errorMessage = error.message || 'Facebook signup failed';
-            } finally {
-                const vm = page.bindingContext;
-                vm.isLoading = false;
-            }
+        onFacebookSignUpTap(args: EventData) {
+            showToast('Facebook Sign Up - Coming Soon!');
         },
 
         onLoginTap(args: EventData) {

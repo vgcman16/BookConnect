@@ -1,5 +1,6 @@
 import { EventData, Page, NavigationEntry } from '@nativescript/core';
 import { AuthService } from '../../services/auth.service';
+import { showToast } from '../../utils/ui-helper';
 
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
@@ -40,40 +41,12 @@ export function onNavigatingTo(args: EventData) {
             }
         },
 
-        async onGoogleLoginTap(args: EventData) {
-            try {
-                const vm = page.bindingContext;
-                vm.isLoading = true;
-                vm.errorMessage = '';
-
-                await authService.signInWithGoogle();
-                navigateToHome(page);
-            } catch (error) {
-                console.error('Google login error:', error);
-                const vm = page.bindingContext;
-                vm.errorMessage = error.message || 'Google login failed';
-            } finally {
-                const vm = page.bindingContext;
-                vm.isLoading = false;
-            }
+        onGoogleLoginTap(args: EventData) {
+            showToast('Google Sign In - Coming Soon!');
         },
 
-        async onFacebookLoginTap(args: EventData) {
-            try {
-                const vm = page.bindingContext;
-                vm.isLoading = true;
-                vm.errorMessage = '';
-
-                await authService.signInWithFacebook();
-                navigateToHome(page);
-            } catch (error) {
-                console.error('Facebook login error:', error);
-                const vm = page.bindingContext;
-                vm.errorMessage = error.message || 'Facebook login failed';
-            } finally {
-                const vm = page.bindingContext;
-                vm.isLoading = false;
-            }
+        onFacebookLoginTap(args: EventData) {
+            showToast('Facebook Sign In - Coming Soon!');
         },
 
         onSignUpTap(args: EventData) {
@@ -91,8 +64,7 @@ export function onNavigatingTo(args: EventData) {
         },
 
         onForgotPasswordTap(args: EventData) {
-            // TODO: Implement forgot password functionality
-            console.log('Forgot password tapped');
+            showToast('Password Reset - Coming Soon!');
         }
     };
 
