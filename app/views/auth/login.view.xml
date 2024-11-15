@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <ActionBar title="Login" class="action-bar">
+        <NavigationButton visibility="collapsed" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-16">
+            <!-- App Logo -->
+            <Image src="~/assets/images/logo.png" class="logo m-b-30" stretch="aspectFit" />
+            
+            <!-- Error Message -->
+            <Label text="{{ errorMessage }}" 
+                   class="error-message" 
+                   visibility="{{ errorMessage ? 'visible' : 'collapsed' }}" 
+                   textWrap="true" />
+
+            <!-- Login Form -->
+            <GridLayout rows="auto, auto, auto" columns="*" class="form m-t-20">
+                <!-- Email Input -->
+                <StackLayout row="0" class="input-field">
+                    <Label text="Email" class="input-label" />
+                    <TextField text="{{ email }}" 
+                             hint="Enter your email" 
+                             keyboardType="email" 
+                             autocorrect="false" 
+                             autocapitalizationType="none" 
+                             class="input" />
+                </StackLayout>
+
+                <!-- Password Input -->
+                <StackLayout row="1" class="input-field m-t-10">
+                    <Label text="Password" class="input-label" />
+                    <TextField text="{{ password }}" 
+                             hint="Enter your password" 
+                             secure="true" 
+                             class="input" />
+                </StackLayout>
+
+                <!-- Login Button -->
+                <Button row="2" 
+                        text="Login" 
+                        tap="{{ onLoginTap }}" 
+                        isEnabled="{{ !isLoading }}"
+                        class="btn btn-primary m-t-20" />
+            </GridLayout>
+
+            <!-- Forgot Password -->
+            <Label text="Forgot Password?" 
+                   tap="{{ onForgotPasswordTap }}" 
+                   class="forgot-password-label m-t-10" />
+
+            <!-- Social Login Divider -->
+            <StackLayout class="hr-light m-t-20 m-b-20">
+                <Label text="or sign in with" class="text-center" />
+            </StackLayout>
+
+            <!-- Social Login Buttons -->
+            <GridLayout rows="auto" columns="*, *" class="social-login">
+                <!-- Google Sign In -->
+                <Button col="0" 
+                        text="Google" 
+                        tap="{{ onGoogleLoginTap }}" 
+                        isEnabled="{{ !isLoading }}"
+                        class="btn btn-outline social-button m-r-5">
+                    <FormattedString>
+                        <Span text="&#xf1a0;" class="fab social-icon" />
+                        <Span text=" Google" />
+                    </FormattedString>
+                </Button>
+
+                <!-- Facebook Sign In -->
+                <Button col="1" 
+                        text="Facebook" 
+                        tap="{{ onFacebookLoginTap }}" 
+                        isEnabled="{{ !isLoading }}"
+                        class="btn btn-outline social-button m-l-5">
+                    <FormattedString>
+                        <Span text="&#xf09a;" class="fab social-icon" />
+                        <Span text=" Facebook" />
+                    </FormattedString>
+                </Button>
+            </GridLayout>
+
+            <!-- Sign Up Link -->
+            <GridLayout rows="auto" columns="auto, auto" class="sign-up-stack m-t-20">
+                <Label col="0" text="Don't have an account? " class="text-center" />
+                <Label col="1" 
+                       text="Sign up" 
+                       tap="{{ onSignUpTap }}" 
+                       class="sign-up-label" />
+            </GridLayout>
+
+            <!-- Loading Indicator -->
+            <ActivityIndicator busy="{{ isLoading }}" 
+                             visibility="{{ isLoading ? 'visible' : 'collapsed' }}" 
+                             class="activity-indicator" />
+        </StackLayout>
+    </ScrollView>
+</Page>

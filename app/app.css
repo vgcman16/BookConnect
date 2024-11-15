@@ -1,5 +1,92 @@
 ﻿@import '@nativescript/theme/css/core.css';
 @import '@nativescript/theme/css/default.css';
+@import './styles/auth.css';
+@import './styles/home.css';
 
-/* Place any CSS rules you want to apply on both iOS and Android here.
-This is where the vast majority of your CSS code goes. */
+/* Font Awesome Icons */
+.fas {
+    font-family: "Font Awesome 5 Free", "fa-solid-900";
+    font-weight: 900;
+}
+
+.fab {
+    font-family: "Font Awesome 5 Brands", "fa-brands-400";
+    font-weight: 400;
+}
+
+/* Common Styles */
+.page {
+    background-color: #ffffff;
+}
+
+.action-bar {
+    background-color: #2196F3;
+    color: #ffffff;
+}
+
+.btn {
+    height: 50;
+    border-radius: 25;
+    font-size: 18;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #2196F3;
+    color: #ffffff;
+}
+
+.btn-primary:highlighted {
+    background-color: #1976D2;
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 14;
+    text-align: center;
+    margin: 10 0;
+}
+
+.activity-indicator {
+    color: #2196F3;
+    width: 30;
+    height: 30;
+    margin: 20 0;
+}
+
+/* Margins and Padding */
+.m-t-5  { margin-top: 5; }
+.m-t-10 { margin-top: 10; }
+.m-t-20 { margin-top: 20; }
+.m-b-5  { margin-bottom: 5; }
+.m-b-10 { margin-bottom: 10; }
+.m-b-20 { margin-bottom: 20; }
+.m-l-5  { margin-left: 5; }
+.m-l-10 { margin-left: 10; }
+.m-l-20 { margin-left: 20; }
+.m-r-5  { margin-right: 5; }
+.m-r-10 { margin-right: 10; }
+.m-r-20 { margin-right: 20; }
+.p-5    { padding: 5; }
+.p-10   { padding: 10; }
+.p-15   { padding: 15; }
+.p-20   { padding: 20; }
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .page {
+        background-color: #121212;
+    }
+
+    .action-bar {
+        background-color: #1976D2;
+    }
+
+    .btn-primary {
+        background-color: #1976D2;
+    }
+
+    .btn-primary:highlighted {
+        background-color: #1565C0;
+    }
+}

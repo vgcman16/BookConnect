@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <ActionBar title="BookConnect" class="action-bar">
+        <ActionItem tap="{{ onProfileTap }}" ios.position="right" android.position="actionBar">
+            <Label text="&#xf2bd;" class="fas" />
+        </ActionItem>
+    </ActionBar>
+
+    <GridLayout rows="*, auto">
+        <!-- Main Content -->
+        <StackLayout row="0" class="p-16">
+            <Label text="Welcome, {{ user.displayName }}!" class="h2" />
+            
+            <!-- Temporary placeholder content -->
+            <StackLayout class="placeholder-content m-t-20">
+                <Label text="Coming Soon:" class="h3" />
+                <Label text="• Book Search and Discovery" class="body m-t-10" />
+                <Label text="• Personal Reading Lists" class="body" />
+                <Label text="• Book Reviews and Ratings" class="body" />
+                <Label text="• Book Clubs and Discussions" class="body" />
+                <Label text="• Reading Progress Tracking" class="body" />
+            </StackLayout>
+        </StackLayout>
+
+        <!-- Bottom Navigation -->
+        <GridLayout row="1" columns="*, *, *" class="bottom-nav">
+            <StackLayout col="0" class="bottom-nav-item">
+                <Label text="&#xf02d;" class="fas" />
+                <Label text="Library" class="bottom-nav-label" />
+            </StackLayout>
+            <StackLayout col="1" class="bottom-nav-item">
+                <Label text="&#xf07c;" class="fas" />
+                <Label text="Collections" class="bottom-nav-label" />
+            </StackLayout>
+            <StackLayout col="2" class="bottom-nav-item" tap="{{ onLogoutTap }}">
+                <Label text="&#xf2f5;" class="fas" />
+                <Label text="Logout" class="bottom-nav-label" />
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+</Page>

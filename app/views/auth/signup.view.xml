@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <ActionBar title="Sign Up" class="action-bar">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-16">
+            <!-- App Logo -->
+            <Image src="~/assets/images/logo.svg" class="logo m-b-30" stretch="aspectFit" />
+            
+            <!-- Error Message -->
+            <Label text="{{ errorMessage }}" 
+                   class="error-message" 
+                   visibility="{{ errorMessage ? 'visible' : 'collapsed' }}" 
+                   textWrap="true" />
+
+            <!-- Sign Up Form -->
+            <GridLayout rows="auto, auto, auto, auto, auto" columns="*" class="form m-t-20">
+                <!-- Display Name Input -->
+                <StackLayout row="0" class="input-field">
+                    <Label text="Display Name" class="input-label" />
+                    <TextField text="{{ displayName }}" 
+                             hint="Enter your display name" 
+                             autocorrect="false" 
+                             class="input" />
+                </StackLayout>
+
+                <!-- Email Input -->
+                <StackLayout row="1" class="input-field m-t-10">
+                    <Label text="Email" class="input-label" />
+                    <TextField text="{{ email }}" 
+                             hint="Enter your email" 
+                             keyboardType="email" 
+                             autocorrect="false" 
+                             autocapitalizationType="none" 
+                             class="input" />
+                </StackLayout>
+
+                <!-- Password Input -->
+                <StackLayout row="2" class="input-field m-t-10">
+                    <Label text="Password" class="input-label" />
+                    <TextField text="{{ password }}" 
+                             hint="Enter your password" 
+                             secure="true" 
+                             class="input" />
+                </StackLayout>
+
+                <!-- Confirm Password Input -->
+                <StackLayout row="3" class="input-field m-t-10">
+                    <Label text="Confirm Password" class="input-label" />
+                    <TextField text="{{ confirmPassword }}" 
+                             hint="Confirm your password" 
+                             secure="true" 
+                             class="input" />
+                </StackLayout>
+
+                <!-- Sign Up Button -->
+                <Button row="4" 
+                        text="Sign Up" 
+                        tap="{{ onSignUpTap }}" 
+                        isEnabled="{{ !isLoading }}"
+                        class="btn btn-primary m-t-20" />
+            </GridLayout>
+
+            <!-- Social Sign Up Divider -->
+            <StackLayout class="hr-light m-t-20 m-b-20">
+                <Label text="or sign up with" class="text-center" />
+            </StackLayout>
+
+            <!-- Social Sign Up Buttons -->
+            <GridLayout rows="auto" columns="*, *" class="social-signup">
+                <!-- Google Sign Up -->
+                <Button col="0" 
+                        text="Google" 
+                        tap="{{ onGoogleSignUpTap }}" 
+                        isEnabled="{{ !isLoading }}"
+                        class="btn btn-outline social-button m-r-5">
+                    <FormattedString>
+                        <Span text="&#xf1a0;" class="fab social-icon" />
+                        <Span text=" Google" />
+                    </FormattedString>
+                </Button>
+
+                <!-- Facebook Sign Up -->
+                <Button col="1" 
+                        text="Facebook" 
+                        tap="{{ onFacebookSignUpTap }}" 
+                        isEnabled="{{ !isLoading }}"
+                        class="btn btn-outline social-button m-l-5">
+                    <FormattedString>
+                        <Span text="&#xf09a;" class="fab social-icon" />
+                        <Span text=" Facebook" />
+                    </FormattedString>
+                </Button>
+            </GridLayout>
+
+            <!-- Login Link -->
+            <GridLayout rows="auto" columns="auto, auto" class="login-stack m-t-20">
+                <Label col="0" text="Already have an account? " class="text-center" />
+                <Label col="1" 
+                       text="Login" 
+                       tap="{{ onLoginTap }}" 
+                       class="sign-up-label" />
+            </GridLayout>
+
+            <!-- Loading Indicator -->
+            <ActivityIndicator busy="{{ isLoading }}" 
+                             visibility="{{ isLoading ? 'visible' : 'collapsed' }}" 
+                             class="activity-indicator" />
+        </StackLayout>
+    </ScrollView>
+</Page>
